@@ -10,6 +10,6 @@ class Yuwellbp extends StatefulWidget {
 class _YuwellbpState extends State<Yuwellbp> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return SizedBox(child: Column(children: [Image.asset("assets/hraej.png")]));
   }
 }

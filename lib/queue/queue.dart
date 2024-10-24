@@ -13,16 +13,20 @@ class _QueueState extends State<Queue> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Text("หน้่า queue "),
-          Text("ตัวอย่าง queue 1"),
-          ElevatedButton(
-              onPressed: () {
-                context.read<DataProvider>().updateViewindex("videocall");
-              },
-              child: Text('TestVideo'))
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text("หน้่า queue "),
+            Text("ตัวอย่าง queue 1"),
+            ElevatedButton(
+                onPressed: () {
+                  context.read<DataProvider>().updateViewindex("videocall");
+                },
+                child: Text('TestVideo'))
+          ],
+        ),
       ),
     );
   }

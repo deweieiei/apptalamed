@@ -4,6 +4,7 @@ import 'package:app_talamed/queue/queue.dart';
 import 'package:app_talamed/videocall/videocall.dart';
 import 'package:app_talamed/vital_sign/index_vitalsign.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class Index extends StatefulWidget {
@@ -16,31 +17,36 @@ class Index extends StatefulWidget {
 class _IndexState extends State<Index> {
   @override
   Widget build(BuildContext context) {
-    return context.watch<DataProvider>().viewIndex == "vitalsign"
-        ? const Scaffold(body: IndexVitalsign())
-        : context.watch<DataProvider>().viewIndex == "queue"
-            ? const Queue()
-            : context.watch<DataProvider>().viewIndex == "videocall"
-                ? const Videocall()
-                : Scaffold(
-                    body: SizedBox(
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Cardreader(),
-                          //  Numpad(),
-                          ElevatedButton(
-                              onPressed: () {
-                                context
-                                    .read<DataProvider>()
-                                    .updateViewindex("vitalsign");
-                              },
-                              child: const Text('Test'))
-                        ],
-                      ),
-                    ),
-                  ));
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(border: Border.all(color: Colors.green)),
+        child: context.watch<DataProvider>().viewIndex == "vitalsign"
+            ? const Scaffold(body: IndexVitalsign())
+            : context.watch<DataProvider>().viewIndex == "queue"
+                ? const Queue()
+                : context.watch<DataProvider>().viewIndex == "videocall"
+                    ? const Videocall()
+                    : Scaffold(
+                        body: SizedBox(
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const Cardreader(),
+                              //  Numpad(),
+                              ElevatedButton(
+                                  onPressed: () {
+                                    context
+                                        .read<DataProvider>()
+                                        .updateViewindex("vitalsign");
+                                  },
+                                  child: const Text('Test'))
+                            ],
+                          ),
+                        ),
+                      )),
+      ),
+    );
   }
 }

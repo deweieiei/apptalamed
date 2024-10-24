@@ -13,15 +13,19 @@ class _VideocallState extends State<Videocall> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Text('หน้าvideocall'),
-          ElevatedButton(
-              onPressed: () {
-                context.read<DataProvider>().updateViewindex("index");
-              },
-              child: Text("กลับหน้าหลัก"))
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Text('หน้าvideocall'),
+            ElevatedButton(
+                onPressed: () {
+                  context.read<DataProvider>().updateViewindex("index");
+                },
+                child: Text("กลับหน้าหลัก"))
+          ],
+        ),
       ),
     );
   }

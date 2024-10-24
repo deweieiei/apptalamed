@@ -1,4 +1,6 @@
 import 'package:app_talamed/provider/provider.dart';
+import 'package:app_talamed/vital_sign/height-width.dart';
+import 'package:app_talamed/vital_sign/spo2.dart';
 import 'package:app_talamed/vital_sign/yuwellBP.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -31,7 +33,8 @@ class _IndexVitalsignState extends State<IndexVitalsign> {
                 child: showviewvitalsign == 0
                     ? Column(
                         children: [
-                          const Yuwellbp(),
+                          const Text("น้หนักส่วนสูง"),
+                          const Heightwidth(),
                           ElevatedButton(
                               onPressed: upshowviewvitalsign,
                               child: const Text("ไปต่อ"))
@@ -40,7 +43,8 @@ class _IndexVitalsignState extends State<IndexVitalsign> {
                     : showviewvitalsign == 1
                         ? Column(
                             children: [
-                              const Text("น้หนักส่วนสูง"),
+                              const Text("ความดัน"),
+                              const Yuwellbp(),
                               ElevatedButton(
                                   onPressed: upshowviewvitalsign,
                                   child: const Text("ไปต่อ"))
@@ -50,18 +54,35 @@ class _IndexVitalsignState extends State<IndexVitalsign> {
                             ? Column(
                                 children: [
                                   const Text("SPO2"),
+                                  const Spo2(),
                                   ElevatedButton(
                                       onPressed: upshowviewvitalsign,
                                       child: const Text("ไปต่อ"))
                                 ],
                               )
-                            : ElevatedButton(
-                                onPressed: () {
-                                  context
-                                      .read<DataProvider>()
-                                      .updateViewindex("queue");
-                                },
-                                child: const Text("เสร็จสิ้น")))
+                            : Column(
+                                children: [
+                                  Text(
+                                      "SYS ${context.read<DataProvider>().sys}"),
+                                  Text(
+                                      "DIS ${context.read<DataProvider>().dia}"),
+                                  Text(
+                                      "PULSE ${context.read<DataProvider>().pulse}"),
+                                  Text(
+                                      "width ${context.read<DataProvider>().width}"),
+                                  Text(
+                                      "height ${context.read<DataProvider>().height}"),
+                                  Text(
+                                      "Spo2 ${context.read<DataProvider>().spo2}"),
+                                  ElevatedButton(
+                                      onPressed: () {
+                                        context
+                                            .read<DataProvider>()
+                                            .updateViewindex("queue");
+                                      },
+                                      child: const Text("เสร็จสิ้น")),
+                                ],
+                              ))
           ],
         )),
       ),
