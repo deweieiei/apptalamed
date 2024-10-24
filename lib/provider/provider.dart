@@ -14,4 +14,15 @@ class DataProvider with ChangeNotifier {
   String platfromURL = "";
 
   String care_unit_id = "";
+
+  String viewIndex = "index";
+
+  void updateViewindex(String nameView) {
+//index
+//vitalsign
+//queue
+//videocall
+    viewIndex = nameView;
+    notifyListeners();
+  }
 }
