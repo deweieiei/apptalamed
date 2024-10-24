@@ -1,4 +1,6 @@
+import 'package:app_talamed/MyApp/numpad.dart';
 import 'package:app_talamed/card_reader/cardreader.dart';
+import 'package:app_talamed/vital_sign/index_vitalsign.dart';
 import 'package:flutter/material.dart';
 
 class Index extends StatefulWidget {
@@ -11,14 +13,26 @@ class Index extends StatefulWidget {
 class _IndexState extends State<Index> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return Scaffold(
+        body: SizedBox(
+      child: Center(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Cardreader()],
-          ),
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Cardreader(),
+            Numpad(),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const IndexVitalsign()));
+                },
+                child: const Text('Test'))
+          ],
+        ),
       ),
-    );
+    ));
   }
 }
