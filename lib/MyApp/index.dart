@@ -4,7 +4,6 @@ import 'package:app_talamed/queue/queue.dart';
 import 'package:app_talamed/videocall/videocall.dart';
 import 'package:app_talamed/vital_sign/index_vitalsign.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class Index extends StatefulWidget {
