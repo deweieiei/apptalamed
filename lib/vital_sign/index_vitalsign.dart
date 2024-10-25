@@ -21,59 +21,96 @@ class _IndexVitalsignState extends State<IndexVitalsign> {
     });
   }
 
+  void downshowviewvitalsign() {
+    setState(() {
+      showviewvitalsign--;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-            child: Column(
-          children: [
-            const Text("วัดค่า"),
-            SizedBox(
-                child: showviewvitalsign == 0
-                    ? Column(
+    return Center(
+        child: Column(
+      children: [
+        const Text("วัดค่า"),
+        SizedBox(
+            child: showviewvitalsign == 0
+                ? Column(
+                    children: [
+                      const Text("น้หนักส่วนสูง"),
+                      const Heightwidth(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          const Text("น้หนักส่วนสูง"),
-                          const Heightwidth(),
+                          ElevatedButton(
+                              onPressed: () {
+                                context
+                                    .read<DataProvider>()
+                                    .updateViewindex("รืกำป");
+                              },
+                              child: const Text("ย้อนกลับ")),
                           ElevatedButton(
                               onPressed: upshowviewvitalsign,
-                              child: const Text("ไปต่อ"))
+                              child: const Text("ไปต่อ")),
                         ],
-                      )
-                    : showviewvitalsign == 1
-                        ? Column(
+                      ),
+                    ],
+                  )
+                : showviewvitalsign == 1
+                    ? Column(
+                        children: [
+                          const Text("ความดัน"),
+                          const Yuwellbp(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              const Text("ความดัน"),
-                              const Yuwellbp(),
+                              ElevatedButton(
+                                  onPressed: downshowviewvitalsign,
+                                  child: const Text("ย้อนกลับ")),
                               ElevatedButton(
                                   onPressed: upshowviewvitalsign,
-                                  child: const Text("ไปต่อ"))
+                                  child: const Text("ไปต่อ")),
                             ],
                           )
-                        : showviewvitalsign == 2
-                            ? Column(
+                        ],
+                      )
+                    : showviewvitalsign == 2
+                        ? Column(
+                            children: [
+                              const Text("SPO2"),
+                              const Spo2(),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: [
-                                  const Text("SPO2"),
-                                  const Spo2(),
+                                  ElevatedButton(
+                                      onPressed: downshowviewvitalsign,
+                                      child: const Text("ย้อนกลับ")),
                                   ElevatedButton(
                                       onPressed: upshowviewvitalsign,
-                                      child: const Text("ไปต่อ"))
+                                      child: const Text("ไปต่อ")),
                                 ],
                               )
-                            : Column(
+                            ],
+                          )
+                        : Column(
+                            children: [
+                              Text("SYS ${context.read<DataProvider>().sys}"),
+                              Text("DIS ${context.read<DataProvider>().dia}"),
+                              Text(
+                                  "PULSE ${context.read<DataProvider>().pulse}"),
+                              Text(
+                                  "width ${context.read<DataProvider>().width}"),
+                              Text(
+                                  "height ${context.read<DataProvider>().height}"),
+                              Text("Spo2 ${context.read<DataProvider>().spo2}"),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
                                 children: [
-                                  Text(
-                                      "SYS ${context.read<DataProvider>().sys}"),
-                                  Text(
-                                      "DIS ${context.read<DataProvider>().dia}"),
-                                  Text(
-                                      "PULSE ${context.read<DataProvider>().pulse}"),
-                                  Text(
-                                      "width ${context.read<DataProvider>().width}"),
-                                  Text(
-                                      "height ${context.read<DataProvider>().height}"),
-                                  Text(
-                                      "Spo2 ${context.read<DataProvider>().spo2}"),
+                                  ElevatedButton(
+                                      onPressed: downshowviewvitalsign,
+                                      child: const Text("ย้อนกลับ")),
                                   ElevatedButton(
                                       onPressed: () {
                                         context
@@ -82,10 +119,10 @@ class _IndexVitalsignState extends State<IndexVitalsign> {
                                       },
                                       child: const Text("เสร็จสิ้น")),
                                 ],
-                              ))
-          ],
-        )),
-      ),
-    );
+                              ),
+                            ],
+                          ))
+      ],
+    ));
   }
 }

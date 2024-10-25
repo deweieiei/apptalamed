@@ -9,7 +9,15 @@ class Printer extends StatefulWidget {
 
 class _PrinterState extends State<Printer> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return SizedBox();
+    return SizedBox(
+      child: ElevatedButton(onPressed: () {}, child: const Text("Printer")),
+    );
   }
 }
