@@ -15,7 +15,7 @@ class DataProvider with ChangeNotifier {
 
   String care_unit_id = "";
 
-  String? sys, dia, pulse, height, width, spo2, idcard;
+  String? sys, dia, pulse, height, width, spo2, temp, idcard;
 
   String viewIndex = "index";
 

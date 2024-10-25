@@ -15,6 +15,27 @@ class _HeightwidthState extends State<Heightwidth> {
       color: const Color.fromARGB(255, 111, 218, 115),
       border: Border.all(color: Colors.green));
 
+  Widget boxText(String title, String vitalsign) {
+    String data;
+    if (vitalsign.isEmpty || vitalsign == "null") {
+      data = "0";
+    } else {
+      data = vitalsign;
+    }
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              color: const Color.fromARGB(255, 235, 235, 235),
+              border: Border.all(color: const Color.fromARGB(255, 66, 66, 66))),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text("$title $data", style: const TextStyle(fontSize: 40)),
+          )),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -23,18 +44,8 @@ class _HeightwidthState extends State<Heightwidth> {
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-                decoration: decoration,
-                child: Text("น้ำหนัก ${context.read<DataProvider>().width}")),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-                decoration: decoration,
-                child: Text("ส่วนสูง  ${context.read<DataProvider>().width}")),
-          )
+          boxText("น้ำหนัก ", "${context.watch<DataProvider>().width}"),
+          boxText("ส่วนสูง  ", "${context.watch<DataProvider>().height}"),
         ],
       )
     ]));

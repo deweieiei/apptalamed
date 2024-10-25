@@ -2,14 +2,14 @@ import 'package:app_talamed/provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class Yuwellbp extends StatefulWidget {
-  const Yuwellbp({super.key});
+class Temp extends StatefulWidget {
+  const Temp({super.key});
 
   @override
-  State<Yuwellbp> createState() => _YuwellbpState();
+  State<Temp> createState() => _TempState();
 }
 
-class _YuwellbpState extends State<Yuwellbp> {
+class _TempState extends State<Temp> {
   Widget boxText(String title, String vitalsign) {
     String data;
     if (vitalsign.isEmpty || vitalsign == "null") {
@@ -35,14 +35,10 @@ class _YuwellbpState extends State<Yuwellbp> {
   Widget build(BuildContext context) {
     return SizedBox(
         child: Column(children: [
-      Image.asset("assets/hraej.png"),
+      Image.asset("assets/temp.png"),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          boxText("SYS", "${context.read<DataProvider>().sys}"),
-          boxText("DIA", "${context.read<DataProvider>().dia}"),
-          boxText("PULSE", "${context.read<DataProvider>().pulse}")
-        ],
+        children: [boxText("Temp", "${context.watch<DataProvider>().temp}")],
       )
     ]));
   }
