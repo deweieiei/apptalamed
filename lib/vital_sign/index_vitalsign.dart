@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:app_talamed/provider/provider.dart';
 import 'package:app_talamed/vital_sign/height-width.dart';
 import 'package:app_talamed/vital_sign/spo2.dart';
@@ -5,6 +7,7 @@ import 'package:app_talamed/vital_sign/temp.dart';
 import 'package:app_talamed/vital_sign/yuwellBP.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 
 class IndexVitalsign extends StatefulWidget {
   const IndexVitalsign({super.key});
@@ -15,6 +18,16 @@ class IndexVitalsign extends StatefulWidget {
 
 class _IndexVitalsignState extends State<IndexVitalsign> {
   int showviewvitalsign = 0;
+
+  void senvitalsign() async {
+    var url = Uri.parse('${context.read<DataProvider>().platfromURL}/add_hr');
+    var res = await http.post(url, body: {
+      "public_id": context.read<DataProvider>().id,
+      "care_unit_id": context.read<DataProvider>().care_unit_id,
+    });
+    var resTojson = json.decode(res.body);
+    if (res.statusCode == 200) {}
+  }
 
   void upshowviewvitalsign() {
     setState(() {
@@ -54,7 +67,11 @@ class _IndexVitalsignState extends State<IndexVitalsign> {
     return Center(
         child: Column(
       children: [
-        const Text("วัดค่า"),
+        const Text("วัดค่า",
+            style: TextStyle(shadows: [
+              Shadow(
+                  color: Color(0x80000000), offset: Offset(0, 2), blurRadius: 2)
+            ], fontSize: 42, color: Color(0xff00A3FF))),
         SizedBox(
             child: showviewvitalsign == 0
                 ? Column(
@@ -163,7 +180,7 @@ class _IndexVitalsignState extends State<IndexVitalsign> {
                                                 .read<DataProvider>()
                                                 .updateViewindex("queue");
                                           },
-                                          child: const Text("เสร็จสิ้น")),
+                                          child: const Text("ส่งข้อมูล")),
                                     ],
                                   ),
                                 ],

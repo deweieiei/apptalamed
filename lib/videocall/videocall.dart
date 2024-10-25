@@ -17,7 +17,13 @@ class _VideocallState extends State<Videocall> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text('หน้าvideocall'),
+          const Text('videocall',
+              style: TextStyle(shadows: [
+                Shadow(
+                    color: Color(0x80000000),
+                    offset: Offset(0, 2),
+                    blurRadius: 2)
+              ], fontSize: 42, color: Color(0xff00A3FF))),
           ElevatedButton(
               onPressed: () {
                 context.read<DataProvider>().updateViewindex("index");

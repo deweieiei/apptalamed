@@ -18,8 +18,19 @@ class _QueueState extends State<Queue> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text("หน้่า queue "),
+          const Text("คิว",
+              style: TextStyle(shadows: [
+                Shadow(
+                    color: Color(0x80000000),
+                    offset: Offset(0, 2),
+                    blurRadius: 2)
+              ], fontSize: 42, color: Color(0xff00A3FF))),
           Text("ตัวอย่าง queue 1"),
+          Text("รอวีดีโอคอล"),
+          const Positioned(
+              right: 0,
+              child: SizedBox(
+                  child: CircularProgressIndicator(color: Colors.black))),
           ElevatedButton(
               onPressed: () {
                 context.read<DataProvider>().updateViewindex("videocall");
