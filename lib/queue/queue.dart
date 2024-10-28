@@ -25,8 +25,7 @@ class _QueueState extends State<Queue> {
                     offset: Offset(0, 2),
                     blurRadius: 2)
               ], fontSize: 42, color: Color(0xff00A3FF))),
-          Text("ตัวอย่าง queue 1"),
-          Text("รอวีดีโอคอล"),
+          const Text("รอวีดีโอคอล"),
           const Positioned(
               right: 0,
               child: SizedBox(
