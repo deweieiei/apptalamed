@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DataProvider with ChangeNotifier {
-  String id = "";
+  String id = "1710501456572";
 
   String password = "";
 
@@ -11,11 +11,18 @@ class DataProvider with ChangeNotifier {
 
   String name_hospital = "";
 
-  String platfromURL = "";
+  String platfromURL = "https://emr-life.com/clinic_master/clinic/Api";
 
-  String care_unit_id = "";
+  String care_unit_id = "63d79d61790f9bc857000006";
 
-  String? sys, dia, pulse, height, width, spo2, temp, idcard;
+  String sys = "",
+      dia = "",
+      pulse = "",
+      height = "",
+      weight = "",
+      spo2 = "",
+      temp = "",
+      idcard = "";
 
   String viewIndex = "index";
 

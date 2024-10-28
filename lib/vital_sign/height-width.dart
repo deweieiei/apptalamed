@@ -44,8 +44,8 @@ class _HeightwidthState extends State<Heightwidth> {
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          boxText("น้ำหนัก ", "${context.watch<DataProvider>().width}"),
-          boxText("ส่วนสูง  ", "${context.watch<DataProvider>().height}"),
+          boxText("น้ำหนัก ", context.watch<DataProvider>().weight),
+          boxText("ส่วนสูง  ", context.watch<DataProvider>().height),
         ],
       )
     ]));
