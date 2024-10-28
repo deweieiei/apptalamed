@@ -35,12 +35,13 @@ class _TempState extends State<Temp> {
 
   @override
   Widget build(BuildContext context) {
+    DataProvider dataProvider = context.read<DataProvider>();
     return SizedBox(
         child: Column(children: [
       Image.asset("assets/temp.png"),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [boxText("Temp", context.watch<DataProvider>().temp)],
+        children: [boxText("Temp", dataProvider.temp)],
       )
     ]));
   }

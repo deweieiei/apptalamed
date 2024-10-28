@@ -1,4 +1,5 @@
 import 'package:app_talamed/card_reader/cardreader.dart';
+import 'package:app_talamed/information/information.dart';
 import 'package:app_talamed/provider/provider.dart';
 import 'package:app_talamed/queue/queue.dart';
 import 'package:app_talamed/videocall/videocall.dart';
@@ -19,6 +20,7 @@ class _IndexState extends State<Index> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    DataProvider dataProvider = context.watch<DataProvider>();
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(border: Border.all(color: Colors.green)),
@@ -36,25 +38,25 @@ class _IndexState extends State<Index> {
                 height: height * 0.84,
                 child: ListView(
                   children: [
-                    context.watch<DataProvider>().viewIndex == "vitalsign"
-                        ? const IndexVitalsign()
-                        : context.watch<DataProvider>().viewIndex == "queue"
-                            ? const Queue()
-                            : context.watch<DataProvider>().viewIndex ==
-                                    "videocall"
-                                ? const Videocall()
-                                : Column(
-                                    children: [
-                                      const Cardreader(),
-                                      ElevatedButton(
-                                          onPressed: () {
-                                            context
-                                                .read<DataProvider>()
-                                                .updateViewindex("vitalsign");
-                                          },
-                                          child: const Text('Test')),
-                                    ],
-                                  ),
+                    dataProvider.viewIndex == "information"
+                        ? const Information()
+                        : dataProvider.viewIndex == "vitalsign"
+                            ? const IndexVitalsign()
+                            : dataProvider.viewIndex == "queue"
+                                ? const Queue()
+                                : dataProvider.viewIndex == "videocall"
+                                    ? const Videocall()
+                                    : Column(
+                                        children: [
+                                          const Cardreader(),
+                                          ElevatedButton(
+                                              onPressed: () {
+                                                dataProvider.updateViewindex(
+                                                    "information");
+                                              },
+                                              child: const Text('Test')),
+                                        ],
+                                      ),
                   ],
                 )),
           ],

@@ -28,7 +28,7 @@ class _VideocallState extends State<Videocall> {
               onPressed: () {
                 context.read<DataProvider>().updateViewindex("index");
               },
-              child: Text("กลับหน้าหลัก"))
+              child: const Text("กลับหน้าหลัก"))
         ],
       ),
     );

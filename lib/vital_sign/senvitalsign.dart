@@ -14,6 +14,7 @@ class Senvitalsign extends StatefulWidget {
 
 class _SenvitalsignState extends State<Senvitalsign> {
   bool statusBUT = false;
+
   Widget boxText(String title, TextEditingController vitalsign) {
     return Padding(
         padding: const EdgeInsets.all(8.0),
@@ -73,15 +74,16 @@ class _SenvitalsignState extends State<Senvitalsign> {
 
   @override
   Widget build(BuildContext context) {
+    DataProvider dataProvider = context.read<DataProvider>();
     return Column(
       children: [
-        boxText("น้ำหนัก ", context.watch<DataProvider>().weight),
-        boxText("ส่วนสูง  ", context.watch<DataProvider>().height),
-        boxText("SYS", context.read<DataProvider>().sys),
-        boxText("DIA", context.read<DataProvider>().dia),
-        boxText("PULSE", context.read<DataProvider>().pulse),
-        boxText("Spo2", context.watch<DataProvider>().spo2),
-        boxText("Temp", context.watch<DataProvider>().temp),
+        boxText("น้ำหนัก ", dataProvider.weight),
+        boxText("ส่วนสูง  ", dataProvider.height),
+        boxText("SYS", dataProvider.sys),
+        boxText("DIA", dataProvider.dia),
+        boxText("PULSE", dataProvider.pulse),
+        boxText("Spo2", dataProvider.spo2),
+        boxText("Temp", dataProvider.temp),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -89,7 +91,7 @@ class _SenvitalsignState extends State<Senvitalsign> {
                 onPressed: () {
                   context.read<DataProvider>().updateViewindex("index");
                 },
-                child: const Text("ย้อนกลับ")),
+                child: const Text("หน้าเเรก")),
             !statusBUT
                 ? ElevatedButton(
                     onPressed: () {

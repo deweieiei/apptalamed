@@ -35,12 +35,13 @@ class _Spo2State extends State<Spo2> {
 
   @override
   Widget build(BuildContext context) {
+    DataProvider dataProvider = context.read<DataProvider>();
     return SizedBox(
         child: Column(children: [
       Image.asset("assets/spo2.jpeg"),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [boxText("Spo2", context.watch<DataProvider>().spo2)],
+        children: [boxText("Spo2", dataProvider.spo2)],
       )
     ]));
   }

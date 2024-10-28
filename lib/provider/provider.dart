@@ -31,6 +31,7 @@ class DataProvider with ChangeNotifier {
 //vitalsign
 //queue
 //videocall
+//information
     viewIndex = nameView;
     notifyListeners();
   }

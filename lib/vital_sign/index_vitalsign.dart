@@ -17,13 +17,6 @@ class IndexVitalsign extends StatefulWidget {
 class _IndexVitalsignState extends State<IndexVitalsign> {
   int showviewvitalsign = 0;
 
-  int calculateBMI(String weightS, String heightCmS) {
-    double heightCm = double.parse(heightCmS);
-    double weight = double.parse(weightS);
-    double heightM = heightCm / 100;
-    return (weight / (heightM * heightM)).round();
-  }
-
   void upshowviewvitalsign() {
     setState(() {
       showviewvitalsign++;
@@ -41,6 +34,7 @@ class _IndexVitalsignState extends State<IndexVitalsign> {
   ], fontSize: 42, color: Color(0xff00A3FF));
   @override
   Widget build(BuildContext context) {
+    DataProvider dataProvider = context.read<DataProvider>();
     return Center(
         child: Column(
       children: [
@@ -56,9 +50,7 @@ class _IndexVitalsignState extends State<IndexVitalsign> {
                         children: [
                           ElevatedButton(
                               onPressed: () {
-                                context
-                                    .read<DataProvider>()
-                                    .updateViewindex("รืกำป");
+                                dataProvider.updateViewindex("รืกำป");
                               },
                               child: const Text("ย้อนกลับ")),
                           ElevatedButton(
@@ -124,7 +116,21 @@ class _IndexVitalsignState extends State<IndexVitalsign> {
                                   )
                                 ],
                               )
-                            : const Senvitalsign())
+                            : Column(
+                                children: [
+                                  Text("ส่ง", style: textStyle),
+                                  const Senvitalsign(),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                      ElevatedButton(
+                                          onPressed: downshowviewvitalsign,
+                                          child: const Text("ย้อนกลับ")),
+                                    ],
+                                  )
+                                ],
+                              ))
       ],
     ));
   }

@@ -40,14 +40,15 @@ class _HeightwidthState extends State<Heightwidth> {
 
   @override
   Widget build(BuildContext context) {
+    DataProvider dataProvider = context.read<DataProvider>();
     return SizedBox(
         child: Column(children: [
       Image.asset("assets/WB-380.jpg"),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          boxText("น้ำหนัก ", context.watch<DataProvider>().weight),
-          boxText("ส่วนสูง  ", context.watch<DataProvider>().height),
+          boxText("น้ำหนัก ", dataProvider.weight),
+          boxText("ส่วนสูง  ", dataProvider.height),
         ],
       )
     ]));

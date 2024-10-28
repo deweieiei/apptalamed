@@ -35,15 +35,16 @@ class _YuwellbpState extends State<Yuwellbp> {
 
   @override
   Widget build(BuildContext context) {
+    DataProvider dataProvider = context.read<DataProvider>();
     return SizedBox(
         child: Column(children: [
       Image.asset("assets/hraej.png"),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          boxText("SYS", context.read<DataProvider>().sys),
-          boxText("DIA", context.read<DataProvider>().dia),
-          boxText("PULSE", context.read<DataProvider>().pulse)
+          boxText("SYS", dataProvider.sys),
+          boxText("DIA", dataProvider.dia),
+          boxText("PULSE", dataProvider.pulse)
         ],
       )
     ]));

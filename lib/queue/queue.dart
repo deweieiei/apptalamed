@@ -34,7 +34,7 @@ class _QueueState extends State<Queue> {
               onPressed: () {
                 context.read<DataProvider>().updateViewindex("videocall");
               },
-              child: Text('TestVideo')),
+              child: const Text('TestVideo')),
           const Printer()
         ],
       ),
