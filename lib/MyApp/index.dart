@@ -1,3 +1,4 @@
+import 'package:app_talamed/MyApp/bodydrawer.dart';
 import 'package:app_talamed/card_reader/cardreader.dart';
 import 'package:app_talamed/information/information.dart';
 import 'package:app_talamed/provider/provider.dart';
@@ -22,6 +23,7 @@ class _IndexState extends State<Index> {
     double width = MediaQuery.of(context).size.width;
     DataProvider dataProvider = context.watch<DataProvider>();
     return Scaffold(
+      drawer: const Drawer(child: BodyDrawer()),
       body: Container(
         decoration: BoxDecoration(border: Border.all(color: Colors.green)),
         child: ListView(
@@ -55,6 +57,13 @@ class _IndexState extends State<Index> {
                                                     "information");
                                               },
                                               child: const Text('Test')),
+                                          ElevatedButton(
+                                              onPressed: () {
+                                                context
+                                                    .read<DataProvider>()
+                                                    .updateViewindex("queue");
+                                              },
+                                              child: const Text('queue')),
                                         ],
                                       ),
                   ],

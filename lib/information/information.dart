@@ -10,6 +10,8 @@ class Information extends StatefulWidget {
 }
 
 class _InformationState extends State<Information> {
+  TextStyle textStylehead =
+      const TextStyle(color: Color.fromARGB(255, 30, 30, 30), fontSize: 18);
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -38,16 +40,24 @@ class _InformationState extends State<Information> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  const Text("ข้อมูล"),
+                  const Text("ข้อมูล",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 30, 30, 30))),
                   Row(children: [
-                    const Text("เลขประจำตัวประชาชน"),
+                    Text("เลขประจำตัวประชาชน", style: textStylehead),
                     Text(dataProvider.id)
                   ]),
-                  const Row(
-                      children: [Text("เกิดวันที่"), Text("9 พ.ค. 2544")]),
-                  const Row(children: [Text("ศาสนา"), Text("พุทธ")]),
-                  const Row(children: [
-                    Text("ที่อยู่"),
+                  Row(children: [
+                    Text("เกิดวันที่", style: textStylehead),
+                    const Text("9 พ.ค. 2544")
+                  ]),
+                  Row(children: [
+                    Text("ศาสนา", style: textStylehead),
+                    const Text("พุทธ")
+                  ]),
+                  Row(children: [
+                    Text("ที่อยู่", style: textStylehead),
                     Text("942/88 ถนนพระราม4 แขวงสุริยวงศ์ เขตบางรัก กรุงเทพฯ")
                   ]),
                   Row(mainAxisAlignment: MainAxisAlignment.end, children: [
