@@ -22,7 +22,7 @@ class _IndexState extends State<Index> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(border: Border.all(color: Colors.green)),
-        child: Column(
+        child: ListView(
           children: [
             SizedBox(
                 width: width,
@@ -31,7 +31,8 @@ class _IndexState extends State<Index> {
                   'assets/tghjk.svg',
                   fit: BoxFit.fill,
                 )),
-            SizedBox(
+            Container(
+                color: Colors.white,
                 height: height * 0.84,
                 child: ListView(
                   children: [

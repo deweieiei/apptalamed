@@ -15,14 +15,14 @@ class DataProvider with ChangeNotifier {
 
   String care_unit_id = "63d79d61790f9bc857000006";
 
-  String sys = "",
-      dia = "",
-      pulse = "",
-      height = "",
-      weight = "",
-      spo2 = "",
-      temp = "",
-      idcard = "";
+  TextEditingController sys = TextEditingController(),
+      dia = TextEditingController(),
+      pulse = TextEditingController(),
+      height = TextEditingController(),
+      weight = TextEditingController(),
+      spo2 = TextEditingController(),
+      temp = TextEditingController(),
+      idcard = TextEditingController();
 
   String viewIndex = "index";
 

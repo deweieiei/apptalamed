@@ -10,25 +10,27 @@ class Temp extends StatefulWidget {
 }
 
 class _TempState extends State<Temp> {
-  Widget boxText(String title, String vitalsign) {
-    String data;
-    if (vitalsign.isEmpty || vitalsign == "null") {
-      data = "0";
-    } else {
-      data = vitalsign;
-    }
+  Widget boxText(String title, TextEditingController vitalsign) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              color: const Color.fromARGB(255, 235, 235, 235),
-              border: Border.all(color: const Color.fromARGB(255, 66, 66, 66))),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text("$title $data", style: const TextStyle(fontSize: 40)),
-          )),
-    );
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: const Color.fromARGB(255, 240, 240, 240),
+                border:
+                    Border.all(color: const Color.fromARGB(255, 66, 66, 66))),
+            child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(title),
+                      SizedBox(
+                          width: 100,
+                          child: TextField(
+                              controller: vitalsign,
+                              keyboardType: TextInputType.number))
+                    ]))));
   }
 
   @override
@@ -38,7 +40,7 @@ class _TempState extends State<Temp> {
       Image.asset("assets/temp.png"),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [boxText("Temp", "${context.watch<DataProvider>().temp}")],
+        children: [boxText("Temp", context.watch<DataProvider>().temp)],
       )
     ]));
   }

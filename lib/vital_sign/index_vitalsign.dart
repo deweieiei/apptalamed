@@ -30,15 +30,15 @@ class _IndexVitalsignState extends State<IndexVitalsign> {
     var res = await http.post(url, body: {
       "public_id": context.read<DataProvider>().id,
       "care_unit_id": context.read<DataProvider>().care_unit_id,
-      "bp_sys": context.read<DataProvider>().sys,
-      "bp_dia": context.read<DataProvider>().dia,
+      "bp_sys": context.read<DataProvider>().sys.text,
+      "bp_dia": context.read<DataProvider>().dia.text,
       "bp":
-          "${context.read<DataProvider>().sys}/${context.read<DataProvider>().dia}",
-      "pulse_rate": context.read<DataProvider>().pulse,
-      "weight": context.read<DataProvider>().weight,
-      "height": context.read<DataProvider>().height,
-      "spo2": context.read<DataProvider>().spo2,
-      "temp": context.read<DataProvider>().temp,
+          "${context.read<DataProvider>().sys.text}/${context.read<DataProvider>().dia.text}",
+      "pulse_rate": context.read<DataProvider>().pulse.text,
+      "weight": context.read<DataProvider>().weight.text,
+      "height": context.read<DataProvider>().height.text,
+      "spo2": context.read<DataProvider>().spo2.text,
+      "temp": context.read<DataProvider>().temp.text,
     });
 
     if (res.statusCode == 200) {
@@ -71,42 +71,43 @@ class _IndexVitalsignState extends State<IndexVitalsign> {
     });
   }
 
-  Widget boxText(String title, String vitalsign) {
-    String data;
-    if (vitalsign.isEmpty || vitalsign == "null") {
-      data = "0";
-    } else {
-      data = vitalsign;
-    }
+  Widget boxText(String title, TextEditingController vitalsign) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              color: const Color.fromARGB(255, 235, 235, 235),
-              border: Border.all(color: const Color.fromARGB(255, 66, 66, 66))),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text("$title $data", style: const TextStyle(fontSize: 40)),
-          )),
-    );
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                color: const Color.fromARGB(255, 240, 240, 240),
+                border:
+                    Border.all(color: const Color.fromARGB(255, 66, 66, 66))),
+            child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(title),
+                      SizedBox(
+                          width: 100,
+                          child: TextField(
+                              controller: vitalsign,
+                              keyboardType: TextInputType.number))
+                    ]))));
   }
 
+  TextStyle textStyle = const TextStyle(shadows: [
+    Shadow(color: Color(0x80000000), offset: Offset(0, 2), blurRadius: 2)
+  ], fontSize: 42, color: Color(0xff00A3FF));
   @override
   Widget build(BuildContext context) {
     return Center(
         child: Column(
       children: [
-        const Text("วัดค่า",
-            style: TextStyle(shadows: [
-              Shadow(
-                  color: Color(0x80000000), offset: Offset(0, 2), blurRadius: 2)
-            ], fontSize: 42, color: Color(0xff00A3FF))),
+        Text("วัดค่า", style: textStyle),
         SizedBox(
             child: showviewvitalsign == 0
                 ? Column(
                     children: [
-                      const Text("น้หนักส่วนสูง"),
+                      Text("น้ำหนักส่วนสูง", style: textStyle),
                       const Heightwidth(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -128,7 +129,7 @@ class _IndexVitalsignState extends State<IndexVitalsign> {
                 : showviewvitalsign == 1
                     ? Column(
                         children: [
-                          const Text("ความดัน"),
+                          Text("ความดัน", style: textStyle),
                           const Yuwellbp(),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -146,7 +147,7 @@ class _IndexVitalsignState extends State<IndexVitalsign> {
                     : showviewvitalsign == 2
                         ? Column(
                             children: [
-                              const Text("SPO2"),
+                              Text("SPO2", style: textStyle),
                               const Spo2(),
                               Row(
                                 mainAxisAlignment:
@@ -165,7 +166,7 @@ class _IndexVitalsignState extends State<IndexVitalsign> {
                         : showviewvitalsign == 3
                             ? Column(
                                 children: [
-                                  const Text("Temp"),
+                                  Text("Temp", style: textStyle),
                                   const Temp(),
                                   Row(
                                     mainAxisAlignment:
