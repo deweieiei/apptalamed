@@ -10,6 +10,8 @@ class Spo2 extends StatefulWidget {
 }
 
 class _Spo2State extends State<Spo2> {
+  void test() {}
+
   Widget boxText(String title, TextEditingController vitalsign) {
     return Padding(
         padding: const EdgeInsets.all(8.0),
